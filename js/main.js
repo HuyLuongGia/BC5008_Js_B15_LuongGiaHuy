@@ -130,3 +130,15 @@ function showEx3() {
         personalTax.toLocaleString();
 }
 document.getElementById("resultEx3").onclick = showEx3;
+
+//? Exercise 4
+// hàm ẩn hiện khi chọn loại khách hàng
+function showHide() {
+    var showhide = document.getElementById("chooseCustomer").value;
+    if(Number(showhide) == 2){
+        document.getElementById("showOrHide").classList.add("show");
+    } 
+    else{
+        document.getElementById("showOrHide").classList.remove("show");
+    }
+}
