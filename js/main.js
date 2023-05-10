@@ -135,10 +135,45 @@ document.getElementById("resultEx3").onclick = showEx3;
 // hàm ẩn hiện khi chọn loại khách hàng
 function showHide() {
     var showhide = document.getElementById("chooseCustomer").value;
-    if(Number(showhide) == 2){
+    if (Number(showhide) == 2) {
         document.getElementById("showOrHide").classList.add("show");
-    } 
-    else{
+    } else {
         document.getElementById("showOrHide").classList.remove("show");
     }
 }
+// Hàm tính tiền cáp của nhà dân
+function calCablePeople() {
+    var peoplePreChan = document.getElementById("premiumChannel").value;
+    var price = 4.5 + 20.5 + Number(peoplePreChan) * 7.5;
+    return price;
+}
+function calCableBusiness() {
+    var businessPreChan = document.getElementById("premiumChannel").value;
+    var connect = document.getElementById("numConnet").value;
+    var price = 0;
+    if (Number(connect) <= 10) {
+        var price = 75 + 15 + Number(businessPreChan) * 50;
+    } else {
+        var remainConnect = Number(connect) - 10;
+        var price = 75 + 15 + remainConnect * 5 + Number(businessPreChan) * 50;
+    }
+    return price;
+}
+// Hàm Ouput
+function showEx4() {
+    var showPriceBusiness = calCableBusiness();
+    var choose = document.getElementById("chooseCustomer").value;
+    var id = document.getElementById("customerId").value;
+    if (Number(choose == 0)) {
+        alert("Hay chon loai khac hang!");
+    }
+    if (Number(choose) == 1) {
+        var showPricePeople = calCablePeople();
+        document.getElementById("txtEx4").innerHTML =
+            "Ma khach hang: " + id + "<br/> Tien cap: " + "$" + showPricePeople;
+    } else if (Number(choose) == 2) {
+        var showPriceBusiness = calCableBusiness();
+        document.getElementById("txtEx4").innerHTML = "Ma khach hang: " + id + "<br/> Tien cap: " + "$" + showPriceBusiness.toLocaleString();
+    }
+}
+document.getElementById("resultEx4").onclick = showEx4;
